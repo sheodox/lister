@@ -1,0 +1,26 @@
+{
+  "name": "list-tracker",
+  "version": "0.0.1",
+  "description": "Configurable list tracker application.",
+  "main": "index.html",
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-react": "^3.0.1",
+    "gulp-sass": "^2.0.2",
+    "node-webkit-builder": "^1.0.12"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "font-awesome": "^4.3.0",
+    "jquery": "^2.1.4",
+    "react": "^0.13.3",
+    "sortablejs": "^1.2.0",
+    "vex-js": "^2.3.2"
+  },
+  "window": {
+    "frame": true,
+    "toolbar": true
+  }
+}
