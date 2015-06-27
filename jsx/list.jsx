@@ -8,12 +8,12 @@
         gui = require('nw.gui'),
         path = require('path'),
         fs = require('fs'),
-        ListAppView = require('./views/AppView.jsx'),
+        ListAppView = require('./js/views/AppView'),
         AppModel = require('./models/AppModel'),
         data;
 
     try {
-        data = JSON.parse(fs.readFileSync(path.join(gui.App.dataPath, 'data.json')).toString());
+        data = JSON.parse(fs.readFileSync('./example-data.json').toString());//JSON.parse(fs.readFileSync(path.join(gui.App.dataPath, 'data.json')).toString());
     }
     catch(e) {
         data = []

@@ -12,8 +12,11 @@ module.exports = (function() {
             name: null,
             collection: null
         },
-        initialize: function(items) {
-            this.set('collection', new ItemCollection(items));
+        getItems: function() {
+            return this.get('collection').models;
+        },
+        initialize: function(lists) {
+            this.set('collection', new ItemCollection(lists.items));
         }
     });
 }());

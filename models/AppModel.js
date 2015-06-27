@@ -12,6 +12,16 @@ module.exports = (function() {
             selected: null,
             collection: null
         },
+        getSelectedGroup: function() {
+            var selected = this.get('selected');
+            if (selected === null) {
+                selected = 0;
+            }
+
+            if (this.get('collection').length > 0) {
+                return this.get('collection').at(selected);
+            }
+        },
         initialize: function(groups) {
             this.set('collection', new GroupCollection(groups));
         }

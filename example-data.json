@@ -1,0 +1,44 @@
+[
+    {
+        "name": "some group",
+        "lists": [
+            {
+                "name": "list 1",
+                "items": [
+                    {
+                        "text": "this is an item",
+                        "details": "this is the details"
+                    },
+                    {
+                        "text": "this is another item",
+                        "details": "man these are some fiiiine details"
+                    }
+                ]
+            }, {
+                "name": "list 2",
+                "items": [
+                    {
+                        "text": "second column! OH YEAH",
+                        "details": "snap into a slim jim!"
+                    },
+                    {
+                        "text": "i like it when my columns"
+                    }
+                ]
+            }
+        ]
+    }, {
+        "name": "this is another group",
+        "lists": [
+            {
+                "name": "this is the only list up in this house",
+                "items": [
+                    {
+                        "text": "there's only one item in here too!",
+                        "details": ""
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,6 +1,7 @@
 module.exports = (function() {
     'use strict';
-    var React = require('react');
+    var React = require('react'),
+        Item = require('./ItemView');
 
     return React.createClass({
         componentDidMount: function() {
@@ -10,8 +11,27 @@ module.exports = (function() {
                 this.forceUpdate.bind(this)
             );
         },
-        render: function() {
+        createItems: function() {
+            var items = this.props.model.getItems();
 
+            return items.map(function(item) {
+                return (
+                    <Item model={item} />
+                );
+            });
+        },
+        render: function() {
+            var name = this.props.model.get('name'),
+                items = this.createItems();
+
+            return (
+                <div>
+                    <h1>{name}</h1>
+                    <ul>
+                        {items}
+                    </ul>
+                </div>
+            )
         }
     });
 }());
