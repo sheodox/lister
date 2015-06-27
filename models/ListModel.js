@@ -3,11 +3,17 @@ module.exports = (function() {
     var Backbone = require('backbone'),
         ItemModel = require('./ItemModel');
 
+    var ListCollection = Backbone.Collection.extend({
+        model: ItemModel
+    });
+
     return Backbone.Model.extend({
-        model: ItemModel,
         defaults: {
             name: null,
-            items: []
+            collection: null
+        },
+        initialize: function(items) {
+            this.set('collection', new ListCollection(items));
         }
     });
 }());
