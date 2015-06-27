@@ -10,20 +10,33 @@ module.exports = (function() {
     return Backbone.Model.extend({
         defaults: {
             selected: null,
-            collection: null
+            groups: null
+        },
+        getGroups: function() {
+            var groups = this.get('groups');
+
+            return groups.models.map(function(group, index) {
+                return {name: group.get('name'), index: index};
+            });
         },
         getSelectedGroup: function() {
             var selected = this.get('selected');
-            if (selected === null) {
-                selected = 0;
-            }
 
-            if (this.get('collection').length > 0) {
-                return this.get('collection').at(selected);
+            if (this.get('groups').length > 0) {
+                return this.get('groups').at(selected);
             }
         },
+        setSelected: function(index) {
+            index = parseInt(index, 10);
+            this.set('selected', index);
+        },
         initialize: function(groups) {
-            this.set('collection', new GroupCollection(groups));
+            var groupsModels = new GroupCollection(groups);
+            this.set('groups', groupsModels);
+
+            if (groupsModels.length) {
+                this.set('selected', 0);
+            }
         }
     });
 }());

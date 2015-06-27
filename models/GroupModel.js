@@ -10,13 +10,13 @@ module.exports = (function() {
     return Backbone.Model.extend({
         defaults: {
             name: null,
-            collection: null
+            lists: null
         },
         getLists: function() {
-            return this.get('collection').models;
+            return this.get('lists').models;
         },
         initialize: function(groups) {
-            this.set('collection', new ListCollection(groups.lists));
+            this.set('lists', new ListCollection(groups.lists));
         }
     });
 }());
