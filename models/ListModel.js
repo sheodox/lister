@@ -3,7 +3,7 @@ module.exports = (function() {
     var Backbone = require('backbone'),
         ItemModel = require('./ItemModel');
 
-    var ListCollection = Backbone.Collection.extend({
+    var ItemCollection = Backbone.Collection.extend({
         model: ItemModel
     });
 
@@ -13,7 +13,7 @@ module.exports = (function() {
             collection: null
         },
         initialize: function(items) {
-            this.set('collection', new ListCollection(items));
+            this.set('collection', new ItemCollection(items));
         }
     });
 }());
