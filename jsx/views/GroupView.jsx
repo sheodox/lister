@@ -5,18 +5,30 @@ module.exports = (function() {
 
     return React.createClass({
         createLists: function() {
-            var lists = this.props.model.getLists();
+            var lists = this.props.model.getLists(),
+                columnClass = '';
+
+            if (lists.length === 2) {
+                columnClass = 'col-md-6';
+            }
+            else if (lists.length > 2) {
+                columnClass = 'col-md-4';
+            }
 
             return lists.map(function(list) {
                 return (
-                    <List model={list} />
+                    <div className={columnClass}>
+                        <List model={list} />
+                    </div>
                 )
             });
         },
         render: function() {
-            var lists = this.createLists();
+            var lists = this.createLists(),
+                numLists = this.props.model.getNumberOfLists();
+
             return (
-                <div>
+                <div className='container-fluid'>
                     <h1>{this.props.model.get('name')}</h1>
                     {lists}
                 </div>

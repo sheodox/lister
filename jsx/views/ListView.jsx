@@ -25,9 +25,9 @@ module.exports = (function() {
                 items = this.createItems();
 
             return (
-                <div>
-                    <h1>{name}</h1>
-                    <ul>
+                <div className='panel panel-default'>
+                    <div className='panel-heading'>{name}</div>
+                    <ul className='panel-body'>
                         {items}
                     </ul>
                 </div>
