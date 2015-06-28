@@ -25,6 +25,19 @@ module.exports = (function() {
         getItems: function() {
             return this.get('items').models;
         },
+        add: function(data) {
+            var text = String(data.text).trim(),
+                details = String(data.details).trim();
+
+            if (text) {
+                this.get('items').add(new ItemModel({
+                    text: text,
+                    details: details
+                }));
+                return true;
+            }
+            return false;
+        },
         initialize: function(lists) {
             this.set('items', new ItemCollection(lists.items));
         }
