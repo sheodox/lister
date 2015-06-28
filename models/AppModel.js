@@ -58,6 +58,11 @@ module.exports = (function() {
             if (groupsModels.length) {
                 this.set('selected', 0);
             }
+
+            //propagate changes
+            this.get('groups').on('add change remove save', function(e) {
+                this.trigger('save');
+            }.bind(this));
         }
     });
 }());

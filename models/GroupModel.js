@@ -45,6 +45,11 @@ module.exports = (function() {
         },
         initialize: function(groups) {
             this.set('lists', new ListCollection(groups.lists));
+
+            //propagate changes
+            this.get('lists').on('add change remove save', function(e) {
+                this.trigger('save');
+            }.bind(this));
         }
     });
 }());

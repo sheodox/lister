@@ -54,6 +54,11 @@ module.exports = (function() {
         },
         initialize: function(lists) {
             this.set('items', new ItemCollection(lists.items));
+
+            //propagate changes
+            this.get('items').on('add change remove', function(e) {
+                this.trigger('save');
+            }.bind(this));
         }
     });
 }());
