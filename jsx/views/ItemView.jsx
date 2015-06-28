@@ -60,7 +60,7 @@ module.exports = (function() {
                         })
                     }
                 }
-            })
+            });
         },
         render: function() {
             var text = this.props.model.get('text'),
