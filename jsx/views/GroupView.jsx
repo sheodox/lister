@@ -4,6 +4,11 @@ module.exports = (function() {
         List = require('./ListView');
 
     return React.createClass({
+        componentDidMount: function() {
+            this.props.model.get('lists').on('add remove', function() {
+                this.forceUpdate();
+            }.bind(this));
+        },
         createLists: function() {
             var lists = this.props.model.getLists(),
                 columnClass = '';
