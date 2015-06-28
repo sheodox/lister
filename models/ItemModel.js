@@ -11,10 +11,14 @@ module.exports = (function() {
             var text = String(data.text).trim(),
                 details = String(data.details).trim();
 
-            this.set({
-                text: text,
-                details: details
-            });
+            if (text) {
+                this.set({
+                    text: text,
+                    details: details
+                });
+                return true;
+            }
+            return false;
         }
     });
 }());
