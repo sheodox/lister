@@ -4,6 +4,8 @@
     global.navigator = window.navigator;
     global.document = window.document;
     global.$ = window.$;
+    global.Sortable = window.Sortable;
+    global.SortableMixin = window.SortableMixin;
 
     var React = require('react'),
         gui = require('nw.gui'),
