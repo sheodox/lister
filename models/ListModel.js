@@ -26,15 +26,19 @@ module.exports = (function() {
             return this.get('items').models;
         },
         add: function(data) {
-            var text = String(data.text).trim(),
-                details = String(data.details).trim();
+            //prevent undefined
+            if (data.text) {
+                var text = String(data.text).trim(),
+                    details = String(data.details).trim();
 
-            if (text) {
-                this.get('items').add(new ItemModel({
-                    text: text,
-                    details: details
-                }));
-                return true;
+                //prevent empty string
+                if (text) {
+                    this.get('items').add(new ItemModel({
+                        text: text,
+                        details: details
+                    }));
+                    return true;
+                }
             }
             return false;
         },

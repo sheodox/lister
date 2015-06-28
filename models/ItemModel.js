@@ -8,15 +8,19 @@ module.exports = (function() {
             details: null
         },
         edit: function(data) {
-            var text = String(data.text).trim(),
-                details = String(data.details).trim();
+            //prevent undefined
+            if (data.text) {
+                var text = String(data.text).trim(),
+                    details = String(data.details).trim();
 
-            if (text) {
-                this.set({
-                    text: text,
-                    details: details
-                });
-                return true;
+                //prevent empty strings
+                if (text) {
+                    this.set({
+                        text: text,
+                        details: details
+                    });
+                    return true;
+                }
             }
             return false;
         }
