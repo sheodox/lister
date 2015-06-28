@@ -16,9 +16,11 @@ module.exports = (function() {
         },
         componentDidMount: function() {
             //re-render on model updates
-            this.props.model.on(
+            this.props.model.get('items').on(
                 'add remove change',
-                this.forceUpdate.bind(this)
+                function() {
+                    this.forceUpdate();
+                }.bind(this)
             );
         },
         handleSort: function(e) {
@@ -37,6 +39,23 @@ module.exports = (function() {
                 return (
                     <Item model={item} key={index} uniqueId={uniqueBase + index} />
                 );
+            });
+        },
+        onAdd: function() {
+            var self = this;
+            vex.dialog.open({
+                message: 'Add',
+                input: `<label for='dialog-text'></label>
+                        <input type='text' id='dialog-text' name='text' />
+                        <label for='dialog-details'></label>
+                        <textarea id='dialog-details' name='details' />`,
+                buttons: [
+                    $.extend({}, vex.dialog.buttons.YES, {text: 'Save'}),
+                    $.extend({}, vex.dialog.buttons.NO, {text: 'Cancel'})
+                ],
+                callback: function(data) {
+                    self.props.model.add(data);
+                }
             });
         },
         render: function() {
