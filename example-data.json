@@ -12,6 +12,14 @@
                     {
                         "text": "this is another item",
                         "details": "man these are some fiiiine details"
+                    },
+                    {
+                        "text": "just another item",
+                        "details": "man, these details just keep on coming"
+                    },
+                    {
+                        "text": "man stuff is crazy!",
+                        "details": "some more stuff or whatever"
                     }
                 ]
             }, {
