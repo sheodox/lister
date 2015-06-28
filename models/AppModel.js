@@ -45,6 +45,12 @@ module.exports = (function() {
                 }
             }
         },
+        toJSON: function() {
+            return this.get('groups').map(function(group) {
+                    return group.toJSON();
+                }
+            );
+        },
         initialize: function(groups) {
             var groupsModels = new GroupCollection(groups);
             this.set('groups', groupsModels);

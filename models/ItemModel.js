@@ -23,6 +23,12 @@ module.exports = (function() {
                 }
             }
             return false;
+        },
+        toJSON: function() {
+            return {
+                text: this.get('text'),
+                details: this.get('details')
+            }
         }
     });
 }());

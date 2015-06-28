@@ -33,6 +33,16 @@ module.exports = (function() {
         getLists: function() {
             return this.get('lists').models;
         },
+        toJSON: function() {
+            var lists = this.get('lists');
+
+            return {
+                name: this.get('name'),
+                lists: lists.map(function(list) {
+                    return list.toJSON();
+                })
+            };
+        },
         initialize: function(groups) {
             this.set('lists', new ListCollection(groups.lists));
         }

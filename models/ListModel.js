@@ -42,6 +42,16 @@ module.exports = (function() {
             }
             return false;
         },
+        toJSON: function() {
+            var items = this.get('items');
+
+            return {
+                name: this.get('name'),
+                items: items.map(function(item) {
+                    return item.toJSON();
+                })
+            };
+        },
         initialize: function(lists) {
             this.set('items', new ItemCollection(lists.items));
         }
