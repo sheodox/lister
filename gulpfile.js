@@ -19,7 +19,10 @@
 
     gulp.task('nwjs', function() {
         var nw = new NwBuilder({
-            files: ['**/**', '!node_modules/gulp/**/**', '!node_modules/gulp-react/**/**', '!node_modules/gulp-sass/**/**', '!node_modules/node-webkit-builder/**/**', '!node_modules/.bin/**/**'],
+            files: [
+                '**/**', '!node_modules/gulp/**/**', '!node_modules/gulp-react/**/**',
+                '!node_modules/gulp-sass/**/**', '!node_modules/node-webkit-builder/**/**', '!node_modules/.bin/**/**'
+            ],
             platforms: ['win64']
         });
 
