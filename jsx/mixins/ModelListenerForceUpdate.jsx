@@ -23,7 +23,7 @@ module.exports = (function() {
                     target;
 
                 target = item ? this.props.model.get(item) : this.props.model;
-                target.on(events, this.onModelUpdate.bind(this));
+                target.on(events, this.onModelUpdate);
             }.bind(this));
         },
         componentWillReceiveProps: function(nextProps) {
