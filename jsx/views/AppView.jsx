@@ -5,9 +5,15 @@ module.exports = (function() {
 
     return React.createClass({
         componentDidMount: function() {
-            this.props.model.on('change', function(){
-                this.forceUpdate()
-            }.bind(this));
+            var update = function() {
+                this.forceUpdate();
+            }.bind(this);
+
+            //selection changes
+            this.props.model.on('change', update);
+
+            //changes to groups
+            this.props.model.get('groups').on('add remove change', update);
         },
         getNavList: function() {
             var groups = this.props.model.getGroups(),
@@ -34,6 +40,21 @@ module.exports = (function() {
                 this.props.model.setSelected(index);
             }
         },
+        add: function() {
+            var self = this;
+            vex.dialog.open({
+                message: 'New Group',
+                input: `<label for='dialog-text'></label>
+                        <input type='text' id='dialog-text' name='name' />`,
+                buttons: [
+                    $.extend({}, vex.dialog.buttons.YES, {text: 'Save'}),
+                    $.extend({}, vex.dialog.buttons.NO, {text: 'Cancel'})
+                ],
+                callback: function(data) {
+                    self.props.model.add(data);
+                }
+            });
+        },
         render: function() {
             var navItems = this.getNavList();
             return (
@@ -47,6 +68,10 @@ module.exports = (function() {
                             <ul className='nav navbar-nav'>
                                 {navItems}
                             </ul>
+                            <button className='navbar-btn btn btn-default icon-button' onClick={this.add}>
+                                <i className='fa fa-plus'></i>
+                                Add Group
+                            </button>
                         </div>
                     </nav>
                     <Group model={this.props.model.getSelectedGroup()} />

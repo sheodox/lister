@@ -30,6 +30,21 @@ module.exports = (function() {
             index = parseInt(index, 10);
             this.set('selected', index);
         },
+        add: function(data) {
+            var name = data.name;
+
+            //prevent undefined
+            if (name) {
+                name = String(name).trim();
+
+                //prevent empty string
+                if (name) {
+                    this.get('groups').add(new GroupModel({
+                        name: name
+                    }));
+                }
+            }
+        },
         initialize: function(groups) {
             var groupsModels = new GroupCollection(groups);
             this.set('groups', groupsModels);
