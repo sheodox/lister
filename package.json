@@ -22,6 +22,6 @@
   },
   "window": {
     "frame": true,
-    "toolbar": true
+    "toolbar": false
   }
 }
