@@ -17,15 +17,16 @@ module.exports = (function() {
             var $details = $(React.findDOMNode(this.refs.details));
 
             $details.collapse('hide')
+                //keep track of the collapse state, so the icon can be changed
                 .on('hide.bs.collapse', function() {
-                    var state = this.state;
-                    state.collapsed = true;
-                    this.setState(state);
+                    this.setState({
+                        collapsed: true
+                    });
                 }.bind(this))
                 .on('show.bs.collapse', function() {
-                    var state = this.state;
-                    state.collapsed = false;
-                    this.setState(state);
+                    this.setState({
+                        collapsed: false
+                    });
                 }.bind(this));
         },
         render: function() {
