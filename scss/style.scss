@@ -9,11 +9,19 @@
 .inline {
     display: inline !important;
 }
-
 nav .add-group-button {
     margin-left: 10px;
 }
-
 .group-panel {
     margin-top: 15px;
+}
+.list-item {
+    .item-controls {
+        opacity: 0;
+        transition: 0.1s opacity;
+    }
+
+    &:hover .item-controls{
+        opacity: 1;
+    }
 }

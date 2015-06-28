@@ -62,6 +62,9 @@ module.exports = (function() {
                 }
             });
         },
+        onDelete: function() {
+            this.props.model.destroy();
+        },
         render: function() {
             var text = this.props.model.get('text'),
                 details = this.props.model.get('details') || 'no details',
@@ -69,10 +72,13 @@ module.exports = (function() {
                 collapseIcon = this.state.collapsed ? 'fa-eye' : 'fa-eye-slash';
 
             return (
-                <li className='list-group-item'>
+                <li className='list-group-item list-item'>
                     <div className='item-header'>
                         {text}
-                        <div className='pull-right'>
+                        <div className='pull-right item-controls'>
+                            <button className='pull-right btn btn-default btn-xs' onClick={this.onDelete}>
+                                <i className={'fa fa-times'}></i>
+                            </button>
                             <button className='pull-right btn btn-default btn-xs' onClick={this.onEdit}>
                                 <i className={'fa fa-cog'}></i>
                             </button>
