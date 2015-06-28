@@ -21,8 +21,11 @@
         var nw = new NwBuilder({
             files: [
                 '**/**', '!node_modules/gulp/**/**', '!node_modules/gulp-react/**/**',
-                '!node_modules/gulp-sass/**/**', '!node_modules/node-webkit-builder/**/**', '!node_modules/.bin/**/**'
+                '!node_modules/gulp-sass/**/**', '!node_modules/node-webkit-builder/**/**', '!node_modules/.bin/**/**',
+                '!cache/**/**', '!build/**/**'
             ],
+            buildDir: './build',
+            cacheDir: './cache',
             platforms: ['win64']
         });
 
