@@ -56,7 +56,31 @@ module.exports = (function() {
             });
         },
         render: function() {
-            var navItems = this.getNavList();
+            var navItems = this.getNavList(),
+                selectedGroup = this.props.model.getSelectedGroup(),
+                content;
+
+            if (selectedGroup) {
+                content = <Group model={this.props.model.getSelectedGroup()} />;
+            }
+            //if no groups exist, show a message
+            else {
+                content = (
+                    <div className='jumbotron'>
+                        <div className='container'>
+                            <h2>You don't have any groups.</h2>
+                            <p>
+                                Groups allow you to have separate collections of lists.
+                            </p>
+                            <button className='navbar-btn btn btn-primary icon-button' onClick={this.add}>
+                                <i className='fa fa-plus'></i>
+                                Add Group
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+
             return (
                 <div>
                     <nav className='nav navbar-default'>
@@ -68,13 +92,13 @@ module.exports = (function() {
                             <ul className='nav navbar-nav'>
                                 {navItems}
                             </ul>
-                            <button className='navbar-btn btn btn-default icon-button' onClick={this.add}>
+                            <button className='navbar-btn btn btn-default icon-button add-group-button' onClick={this.add}>
                                 <i className='fa fa-plus'></i>
                                 Add Group
                             </button>
                         </div>
                     </nav>
-                    <Group model={this.props.model.getSelectedGroup()} />
+                    {content}
                 </div>
             );
         }

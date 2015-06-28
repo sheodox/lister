@@ -60,8 +60,24 @@ module.exports = (function() {
         },
         render: function() {
             var name = this.props.model.get('name'),
-                items = this.createItems();
+                content = this.createItems();
 
+            //if there aren't any items in the list, show a jumbotron in the list
+            if (!content.length) {
+                content = (
+                    <div className='jumbotron'>
+                        <div className='container'>
+                            <p>
+                                There aren't any items in this list.
+                            </p>
+                            <button onClick={this.onAdd} className='btn btn-primary btn-xs icon-button'>
+                                <i className='fa fa-plus'></i>
+                                <span>Add</span>
+                            </button>
+                        </div>
+                    </div>
+                )
+            }
             return (
                 <div className='panel panel-default'>
                     <div className='panel-heading clearfix'>
@@ -74,7 +90,7 @@ module.exports = (function() {
                         </div>
                     </div>
                     <ul className='panel-body list-group' ref='list'>
-                        {items}
+                        {content}
                     </ul>
                 </div>
             )

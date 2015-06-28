@@ -31,7 +31,8 @@ module.exports = (function() {
             this.set('selected', index);
         },
         add: function(data) {
-            var name = data.name;
+            var name = data.name,
+                groups = this.get('groups');
 
             //prevent undefined
             if (name) {
@@ -39,11 +40,17 @@ module.exports = (function() {
 
                 //prevent empty string
                 if (name) {
-                    this.get('groups').add(new GroupModel({
+                    groups.add(new GroupModel({
                         name: name
                     }));
                 }
+
+                //set the selected group to the current one
+                this.setSelected(groups.length - 1);
+
+                return true;
             }
+            return false;
         },
         toJSON: function() {
             return this.get('groups').map(function(group) {

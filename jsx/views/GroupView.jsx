@@ -36,11 +36,16 @@ module.exports = (function() {
                 //show a message instead of lists if there aren't any lists
                 return (
                     <div className='jumbotron'>
-                        <h2>There aren't any lists here</h2>
-                        <button className='btn btn-primary icon-button' onClick={this.add}>
-                            <i className='fa fa-plus'></i>
-                            Add a list
-                        </button>
+                        <div className='container'>
+                            <h2>There aren't any lists here</h2>
+                            <p>
+                                You can have any number of lists, click the button to get started!
+                            </p>
+                            <button className='btn btn-primary icon-button' onClick={this.add}>
+                                <i className='fa fa-plus'></i>
+                                Add List
+                            </button>
+                        </div>
                     </div>
                 )
             }
@@ -65,12 +70,11 @@ module.exports = (function() {
 
             return (
                 <div className='container-fluid'>
-                    <div className='panel panel-default'>
+                    <div className='panel panel-default group-panel'>
                         <div className='panel-heading'>
-                            <h1 className='inline'>{this.props.model.get('name')}</h1>
-                            <button className='btn btn-default icon-button pull-right' onClick={this.add}>
+                            <button className='btn btn-default icon-button' onClick={this.add}>
                                 <i className='fa fa-plus'></i>
-                                Add a list
+                                Add List
                             </button>
                         </div>
                         <div className='panel-body'>
