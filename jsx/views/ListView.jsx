@@ -14,9 +14,9 @@ module.exports = (function() {
         createItems: function() {
             var items = this.props.model.getItems();
 
-            return items.map(function(item) {
+            return items.map(function(item, index) {
                 return (
-                    <Item model={item} />
+                    <Item model={item} key={index} />
                 );
             });
         },
@@ -27,7 +27,7 @@ module.exports = (function() {
             return (
                 <div className='panel panel-default'>
                     <div className='panel-heading'>{name}</div>
-                    <ul className='panel-body'>
+                    <ul className='panel-body list-group'>
                         {items}
                     </ul>
                 </div>

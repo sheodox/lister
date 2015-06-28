@@ -24,8 +24,7 @@ module.exports = (function() {
             });
         },
         render: function() {
-            var lists = this.createLists(),
-                numLists = this.props.model.getNumberOfLists();
+            var lists = this.createLists();
 
             return (
                 <div className='container-fluid'>
