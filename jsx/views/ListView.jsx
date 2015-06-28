@@ -67,7 +67,7 @@ module.exports = (function() {
                     <div className='panel-heading clearfix'>
                         {name}
                         <div className='pull-right'>
-                            <button onClick={this.onAdd} className='btn btn-default btn-xs list-add-btn'>
+                            <button onClick={this.onAdd} className='btn btn-default btn-xs icon-button'>
                                 <i className='fa fa-plus'></i>
                                 <span>Add</span>
                             </button>
