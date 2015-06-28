@@ -12,6 +12,24 @@ module.exports = (function() {
             name: null,
             lists: null
         },
+        add: function(data) {
+            var name = data.name;
+
+            //prevent undefined
+            if (name) {
+                name = String(name).trim();
+
+                //prevent empty string
+                if (name) {
+                    this.get('lists').add(new ListModel({
+                        name: name
+                    }));
+
+                    return true;
+                }
+            }
+            return false;
+        },
         getLists: function() {
             return this.get('lists').models;
         },
