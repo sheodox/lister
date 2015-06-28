@@ -3,6 +3,7 @@
     //react needs these globals
     global.navigator = window.navigator;
     global.document = window.document;
+    global.$ = window.$;
 
     var React = require('react'),
         gui = require('nw.gui'),

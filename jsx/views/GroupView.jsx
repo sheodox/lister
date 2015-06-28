@@ -15,10 +15,13 @@ module.exports = (function() {
                 columnClass = 'col-md-4';
             }
 
-            return lists.map(function(list) {
+            return lists.map(function(list, index) {
+                //to be used as a base for unique IDs for panels so we can have unique ids for the bootstrap collapses
+                var uniqueId = 'list-' + index + '-';
+
                 return (
                     <div className={columnClass}>
-                        <List model={list} />
+                        <List key={index} model={list} uniqueId={uniqueId} />
                     </div>
                 )
             });

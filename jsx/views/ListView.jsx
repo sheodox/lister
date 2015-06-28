@@ -12,11 +12,12 @@ module.exports = (function() {
             );
         },
         createItems: function() {
-            var items = this.props.model.getItems();
+            var items = this.props.model.getItems(),
+                uniqueBase = this.props.uniqueId;
 
             return items.map(function(item, index) {
                 return (
-                    <Item model={item} key={index} />
+                    <Item model={item} key={index} uniqueId={uniqueBase + index} />
                 );
             });
         },
