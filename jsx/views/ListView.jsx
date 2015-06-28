@@ -1,27 +1,23 @@
 module.exports = (function() {
     'use strict';
     var React = require('react'),
-        Item = require('./ItemView');
+        Item = require('./ItemView'),
+        ModelListenerForceUpdate = require('../mixins/ModelListenerForceUpdate');
 
     return React.createClass({
-        mixins: [SortableMixin],
+        mixins: [SortableMixin, ModelListenerForceUpdate],
         sortableOptions: {
             ref: 'list',
             model: 'items'
         },
+        modelListenerForceUpdateOptions: [
+            //update to changes to the items collection
+            {attribute: 'items', events: 'add remove change'}
+        ],
         getInitialState: function() {
             return {
                 items: this.props.model.get('items').models
             };
-        },
-        componentDidMount: function() {
-            //re-render on model updates
-            this.props.model.get('items').on(
-                'add remove change',
-                function() {
-                    this.forceUpdate();
-                }.bind(this)
-            );
         },
         handleSort: function(e) {
             this.props.model.moveModel(e.oldIndex, e.newIndex);

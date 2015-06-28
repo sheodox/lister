@@ -1,14 +1,15 @@
 module.exports = (function() {
     'use strict';
     var React = require('react'),
-        List = require('./ListView');
+        List = require('./ListView'),
+        ModelListenerForceUpdate = require('../mixins/ModelListenerForceUpdate');
 
     return React.createClass({
-        componentDidMount: function() {
-            this.props.model.get('lists').on('add remove', function() {
-                this.forceUpdate();
-            }.bind(this));
-        },
+        mixins: [ModelListenerForceUpdate],
+        modelListenerForceUpdateOptions: [
+            //update to changes to the lists collection
+            {attribute: 'lists', events: 'add remove change'}
+        ],
         createLists: function() {
             var lists = this.props.model.getLists(),
                 columnClass = '';

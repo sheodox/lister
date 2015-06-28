@@ -1,20 +1,17 @@
 module.exports = (function() {
     'use strict';
     var React = require('react'),
-        Group = require('./GroupView');
+        Group = require('./GroupView'),
+        ModelListenerForceUpdate = require('../mixins/ModelListenerForceUpdate');
 
     return React.createClass({
-        componentDidMount: function() {
-            var update = function() {
-                this.forceUpdate();
-            }.bind(this);
-
-            //selection changes
-            this.props.model.on('change', update);
-
-            //changes to groups
-            this.props.model.get('groups').on('add remove change', update);
-        },
+        mixins: [ModelListenerForceUpdate],
+        modelListenerForceUpdateOptions: [
+            //update to changes to the groups collection
+            {attribute: 'groups', events: 'add remove change'},
+            //update to changes in selected groups
+            {events: 'change'}
+        ],
         getNavList: function() {
             var groups = this.props.model.getGroups(),
                 selectedIndex = this.props.model.get('selected');
