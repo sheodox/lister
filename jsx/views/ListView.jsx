@@ -44,7 +44,15 @@ module.exports = (function() {
 
             return (
                 <div className='panel panel-default'>
-                    <div className='panel-heading'>{name}</div>
+                    <div className='panel-heading clearfix'>
+                        {name}
+                        <div className='pull-right'>
+                            <button onClick={this.onAdd} className='btn btn-default btn-xs list-add-btn'>
+                                <i className='fa fa-plus'></i>
+                                <span>Add</span>
+                            </button>
+                        </div>
+                    </div>
                     <ul className='panel-body list-group' ref='list'>
                         {items}
                     </ul>
