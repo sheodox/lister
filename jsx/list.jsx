@@ -11,7 +11,7 @@
     };
     $.extend(global, merge);
 
-    vex.defaultOptions.className = 'vex-theme-os';
+    vex.defaultOptions.className = 'vex-theme-plain';
 
     var React = require('react'),
         gui = require('nw.gui'),
