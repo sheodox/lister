@@ -1,11 +1,17 @@
 (function() {
     'use strict';
-    //react needs these globals
-    global.navigator = window.navigator;
-    global.document = window.document;
-    global.$ = window.$;
-    global.Sortable = window.Sortable;
-    global.SortableMixin = window.SortableMixin;
+    //need to propagate globals
+    var merge = {
+        navigator: navigator,
+        document: document,
+        $: $,
+        Sortable: Sortable,
+        SortableMixin: SortableMixin,
+        vex: vex
+    };
+    $.extend(global, merge);
+
+    vex.defaultOptions.className = 'vex-theme-os';
 
     var React = require('react'),
         gui = require('nw.gui'),
