@@ -54,6 +54,16 @@ module.exports = (function() {
                 }
             });
         },
+        onDelete: function() {
+            vex.dialog.confirm({
+                message: 'Are you sure you want to delete this list?',
+                callback: function(confirmed) {
+                    if (confirmed) {
+                        this.props.model.destroy();
+                    }
+                }.bind(this)
+            });
+        },
         render: function() {
             var name = this.props.model.get('name'),
                 content = this.createItems();
@@ -82,6 +92,10 @@ module.exports = (function() {
                             <button onClick={this.onAdd} className='btn btn-default btn-xs icon-button'>
                                 <i className='fa fa-plus'></i>
                                 <span>Add</span>
+                            </button>
+                            <button onClick={this.onDelete} className='btn btn-default btn-xs icon-button'>
+                                <i className='fa fa-times'></i>
+                                <span>Delete List</span>
                             </button>
                         </div>
                     </div>
