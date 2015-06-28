@@ -24,6 +24,7 @@ module.exports = (function() {
         handleSort: function(e) {
             this.props.model.moveModel(e.oldIndex, e.newIndex);
 
+            //ui won't update after first sort
             this.setState({
                 items: this.props.model.get('items').models
             })
