@@ -1,3 +1,7 @@
 # Lister
 
-Hello World! I'm just adding this so GitHub stops complaining that it doesn't exist. More to follow.
+Lister is a desktop application for lists.
+
+![](http://github.com/sheodox/lister/master/docs/demo.png)
+
+Lists are separated into groups, you can have any number of groups and any number of lists in a group.
