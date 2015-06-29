@@ -28,7 +28,7 @@ module.exports = (function() {
 
                     return (
                         <div className={columnClass}>
-                            <List key={index} model={list} uniqueId={uniqueId}/>
+                            <List key={index} model={list} uniqueId={uniqueId} />
                         </div>
                     )
                 });
@@ -42,7 +42,7 @@ module.exports = (function() {
                             <p>
                                 You can have any number of lists, click the button to get started!
                             </p>
-                            <button className='btn btn-primary icon-button' onClick={this.add}>
+                            <button className='btn btn-primary icon-button' onClick={this.onAdd}>
                                 <i className='fa fa-plus'></i>
                                 Add List
                             </button>
@@ -51,7 +51,7 @@ module.exports = (function() {
                 )
             }
         },
-        add: function() {
+        onAdd: function() {
             var self = this;
             vex.dialog.open({
                 message: 'New List',
@@ -66,6 +66,16 @@ module.exports = (function() {
                 }
             });
         },
+        onDelete: function() {
+            vex.dialog.confirm({
+                message: 'Are you sure you want to delete this group?',
+                callback: function(confirmed) {
+                    if (confirmed) {
+                        this.props.model.destroy();
+                    }
+                }.bind(this)
+            })
+        },
         render: function() {
             var lists = this.createLists();
 
@@ -73,9 +83,13 @@ module.exports = (function() {
                 <div className='container-fluid'>
                     <div className='panel panel-default group-panel'>
                         <div className='panel-heading'>
-                            <button className='btn btn-default icon-button' onClick={this.add}>
+                            <button className='btn btn-default icon-button' onClick={this.onAdd}>
                                 <i className='fa fa-plus'></i>
                                 Add List
+                            </button>
+                            <button className='btn btn-default icon-button' onClick={this.onDelete}>
+                                <i className='fa fa-times'></i>
+                                Delete Group
                             </button>
                         </div>
                         <div className='panel-body'>
