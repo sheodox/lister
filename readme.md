@@ -17,4 +17,4 @@ Lists are sortable, all the items in a list can be re-ordered by dragging an ite
 
 ## Items
 
-Each item is made up of the item text (what is shown in the list) and details, which can be seen by clicking the 'eye' button, to elaborate on an item.
+Each item is made up of the item text (what is shown in the list) and details (to elaborate on the item) which can be seen by clicking the 'eye' button.
