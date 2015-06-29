@@ -1,3 +1,9 @@
+body {
+    height: 100%;
+    width: 100%;
+    background: url('../images/background.png') no-repeat fixed;
+    background-size: cover;
+}
 .item-header {
     padding-bottom: 5px;
 }
