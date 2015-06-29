@@ -67,9 +67,19 @@ module.exports = (function() {
             }
 
             //propagate changes
-            this.get('groups').on('add change remove save', function(e) {
+            this.get('groups').on('add change remove save', function() {
                 this.trigger('save');
             }.bind(this));
+
+            //re-select something if the selection be out of bounds after deleting a group
+            this.get('groups').on('remove', function() {
+                var numGroups = this.getGroups().length;
+
+                if (this.get('selected') + 1 > numGroups) {
+                    //set the selected index to the last group
+                    this.setSelected(numGroups - 1);
+                }
+            }.bind(this))
         }
     });
 }());
