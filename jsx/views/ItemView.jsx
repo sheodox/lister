@@ -76,13 +76,14 @@ module.exports = (function() {
                     <div className='item-header'>
                         {text}
                         <div className='pull-right item-controls'>
-                            <button className='pull-right btn btn-default btn-xs' onClick={this.onDelete}>
+                            <button className='pull-right btn btn-default btn-xs' onClick={this.onDelete} title='delete'>
                                 <i className={'fa fa-times'}></i>
                             </button>
-                            <button className='pull-right btn btn-default btn-xs' onClick={this.onEdit}>
+                            <button className='pull-right btn btn-default btn-xs' onClick={this.onEdit} title='edit'>
                                 <i className={'fa fa-cog'}></i>
                             </button>
-                            <button className='pull-right btn btn-default btn-xs' data-toggle='collapse' data-target={'#' + uniqueId} aria-expanded='false' aria-controls={uniqueId}>
+                            <button className='pull-right btn btn-default btn-xs' data-toggle='collapse'
+                                    data-target={'#' + uniqueId} aria-expanded='false' aria-controls={uniqueId} title='see details'>
                                 <i className={'fa ' + collapseIcon}></i>
                             </button>
                         </div>
