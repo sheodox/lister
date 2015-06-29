@@ -85,7 +85,7 @@ module.exports = (function() {
                 )
             }
             return (
-                <div className='panel panel-default'>
+                <div className='panel panel-default list-panel'>
                     <div className='panel-heading clearfix'>
                         {name}
                         <div className='pull-right'>

@@ -14,6 +14,19 @@ nav .add-group-button {
 }
 .group-panel {
     margin-top: 15px;
+
+    > .panel-heading {
+        button {
+            margin-right: 4px;
+        }
+    }
+}
+.list-panel {
+    > .panel-heading {
+        button {
+            margin-right: 3px;
+        }
+    }
 }
 .list-item {
     .item-controls {
